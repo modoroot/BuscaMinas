@@ -1,7 +1,5 @@
 package com.example.buscaminas;
 
-import android.telephony.CellIdentity;
-
 public class Celda {
     public static final int BOMBA = -1;
     public static final int VACIO = 0;
@@ -20,11 +18,11 @@ public class Celda {
         return num;
     }
 
-    public boolean isRevelado() {
+    public boolean getRevelado() {
         return revelado;
     }
 
-    public boolean isMarcado() {
+    public boolean getMarcado() {
         return marcado;
     }
 
