@@ -12,48 +12,84 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecyclerAdapter.EnvaseRedMinas> {
     private List<Celda> celdas;
     private final EventClickCelda listener;
 
+    /**
+     * @param celdas   celdas del tablero
+     * @param listener manejador de eventos para las celdas
+     */
     public RedMinasRecyclerAdapter(List<Celda> celdas, EventClickCelda listener) {
         this.celdas = celdas;
         this.listener = listener;
     }
 
+    /**
+     * @param parent   para inflar las vistas de las celdas (en sí, es para actualizarlas)
+     * @param viewType //
+     * @return devuelve
+     */
     @NonNull
     @Override
     public EnvaseRedMinas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_celda, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_celda,
+                parent, false);
         return new EnvaseRedMinas(itemView);
     }
 
-
+    /**
+     * @param envase   selecciona el itemview
+     * @param posicion posicion de la celda
+     */
     @Override
     public void onBindViewHolder(@NonNull EnvaseRedMinas envase, int posicion) {
         envase.bind(celdas.get(posicion));
         envase.setIsRecyclable(false);
     }
 
+    /**
+     * @return devuelve el número de celdas
+     */
     @Override
     public int getItemCount() {
         return celdas.size();
     }
 
+    /**
+     * @param celdas guarda las celdas en un List
+     *               notifyDataSetChanged() notifica si ha habido algún cambio a
+     *               los observadores
+     */
     @SuppressLint("NotifyDataSetChanged")
     public void setCeldas(List<Celda> celdas) {
         this.celdas = celdas;
         notifyDataSetChanged();
     }
 
+    /**
+     *
+     */
     class EnvaseRedMinas extends RecyclerView.ViewHolder {
         TextView valorTextView;
 
+        /**
+         * @param itemView id celda
+         */
         public EnvaseRedMinas(@NonNull View itemView) {
             super(itemView);
             valorTextView = itemView.findViewById(R.id.valor_celda);
         }
 
+        /**
+         * método para el muestreo del tipo de celda (celda con bomba, celda vacía,
+         * celda con 1 bomba cercana, y sucesivamente)
+         *
+         * @param celda celda seleccionada
+         */
         public void bind(final Celda celda) {
             itemView.setBackgroundColor(Color.GRAY);
             itemView.setOnClickListener(v -> listener.ClickCelda(celda));
