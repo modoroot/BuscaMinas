@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BuscaMinas</string>
+
+    <string name="check">✔</string>
+    <string name="bandera">🚩</string>
+    <string name="bomba">💣</string>
+    <string name="contador">000</string>
 </resources>
