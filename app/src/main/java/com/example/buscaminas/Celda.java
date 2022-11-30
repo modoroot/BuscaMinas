@@ -10,9 +10,33 @@ public class Celda {
     private boolean revelado;
     private boolean marcado;
 
-    public Celda(int num){
+    public Celda(int num) {
         this.num = num;
         this.revelado = false;
         this.marcado = false;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public boolean isRevelado() {
+        return revelado;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public void setRevelado(boolean revelado) {
+        this.revelado = revelado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 }
