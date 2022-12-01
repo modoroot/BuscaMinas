@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RedMinas {
-    private List<Celda> celdas;
+    private final List<Celda> celdas;
     private int tamanio;
 
     public RedMinas(int tamanio){
