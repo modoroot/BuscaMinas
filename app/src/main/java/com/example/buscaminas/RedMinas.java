@@ -55,16 +55,32 @@ public class RedMinas {
      */
     public void generacionRed(int numBombas){
         int bombas = 0;
+        //generador bombas hasta que sea mayor que el parámetro
+        //del método
         while(bombas < numBombas){
+            //número entre 0 y 8
             int x = new Random().nextInt(tamanio);
             int y = new Random().nextInt(tamanio);
-
             int indice = toIndex(x, y);
+
             if(celdas.get(indice).getNum() == Celda.VACIO){
                 celdas.set(indice, new Celda(Celda.BOMBA));
-                numBombas++;
+                bombas++;
             }
         }
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public Celda posCelda(int x, int y){
+       if(x < 0 || x >= tamanio || y < 0 || y >=tamanio){
+            return null;
+       }
+       return celdas.get(toIndex(x,y));
     }
 
 
