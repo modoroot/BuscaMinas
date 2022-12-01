@@ -11,12 +11,13 @@ import java.util.List;
 public class BuscaMinas {
     private RedMinas redMinas;
 
-    private boolean destapado;
+    private boolean descubrirCasilla;
     private boolean juegoTerminado;
     private boolean isTiempoAcabado;
-    private boolean casillaMarcada;
+    private boolean banderaActivada;
 
     private int numBanderas;
+    private int numeroBombas;
 
     /**
      * Constructor de la clase
@@ -25,11 +26,12 @@ public class BuscaMinas {
      * @param numeroBombas número bombas en el tablero
      */
     public BuscaMinas(int tamanio, int numeroBombas) {
-        this.destapado = true;
+        this.descubrirCasilla = true;
         this.juegoTerminado = false;
         this.isTiempoAcabado = false;
-        this.casillaMarcada = false;
+        this.banderaActivada = false;
         this.numBanderas = 0;
+        this.numeroBombas = numeroBombas;
         redMinas = new RedMinas(tamanio);
         redMinas.generacionRed(numeroBombas);
     }
@@ -41,8 +43,10 @@ public class BuscaMinas {
      */
     public void manejadorClickCeldas(Celda celda) {
         if (!juegoTerminado && !isPartidaGanada() && !isTiempoAcabado) {
-            if (destapado) {
+            if (descubrirCasilla) {
                 clear(celda);
+            }else if(banderaActivada){
+                bandera(celda);
             }
         }
     }
@@ -109,11 +113,22 @@ public class BuscaMinas {
     }
 
     public void bandera(Celda celda){
-
+        if (!celda.isBandera()){
+            celda.setBandera(!celda.isBandera());
+            //contador del TextView
+            int contador = 0;
+            for (Celda c : getRedMinas().getCeldas()) {
+                if (c.isBandera()) {
+                    contador++;
+                }
+            }
+            numBanderas = contador;
+        }
     }
 
-    public void pulsarBandera(){
-
+    public void activarDesactivarModoBandera(){
+        descubrirCasilla = !descubrirCasilla;
+        banderaActivada = !banderaActivada;
     }
 
 
@@ -126,11 +141,15 @@ public class BuscaMinas {
         return juegoTerminado;
     }
 
-    public boolean isCasillaMarcada() {
-        return casillaMarcada;
+    public boolean isBanderaActivada() {
+        return banderaActivada;
     }
 
     public int getNumBanderas() {
         return numBanderas;
+    }
+
+    public int getNumeroBombas() {
+        return numeroBombas;
     }
 }

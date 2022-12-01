@@ -12,12 +12,12 @@ public class Celda {
 
     private int num;
     private boolean revelado;
-    private boolean isMarcado;
+    private boolean isBandera;
 
     public Celda(int num) {
         this.num = num;
         this.revelado = false;
-        this.isMarcado = false;
+        this.isBandera = false;
     }
 
     public int getNum() {
@@ -28,8 +28,8 @@ public class Celda {
         return revelado;
     }
 
-    public boolean getMarcado() {
-        return isMarcado;
+    public boolean isBandera() {
+        return isBandera;
     }
 
     public void setNum(int num) {
@@ -48,7 +48,7 @@ public class Celda {
      * casillas marcadas con el banderín
      * @param marcado casillas marcadas
      */
-    public void setMarcado(boolean marcado) {
-        isMarcado = marcado;
+    public void setBandera(boolean marcado) {
+        isBandera = marcado;
     }
 }

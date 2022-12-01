@@ -102,12 +102,7 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
          */
         public void bind(final Celda celda) {
             itemView.setBackgroundColor(Color.GRAY);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.clickCelda(celda);
-                }
-            });
+            itemView.setOnClickListener(view -> listener.clickCelda(celda));
 
             //muestra la imagen correspondiente según el num
             if (celda.getRevelado()) {
@@ -126,7 +121,7 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
                         valorTextView.setTextColor(Color.RED);
                     }
                 }
-            } else if(celda.getMarcado()){
+            } else if(celda.isBandera()){
                     valorTextView.setText(R.string.bandera);
             }
         }
