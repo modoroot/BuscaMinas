@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecyclerAdapter.EnvaseRedMinas> {
     private List<Celda> celdas;
-    private final EventClickCelda listener;
+    private EventClickCelda listener;
 
     /**
      * @param celdas   celdas del tablero
@@ -26,6 +26,14 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
     public RedMinasRecyclerAdapter(List<Celda> celdas, EventClickCelda listener) {
         this.celdas = celdas;
         this.listener = listener;
+    }
+
+    public List<Celda> getCeldas() {
+        return celdas;
+    }
+
+    public EventClickCelda getListener() {
+        return listener;
     }
 
     /**
@@ -71,7 +79,7 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
     }
 
     /**
-     *
+     * Clase interna
      */
     class EnvaseRedMinas extends RecyclerView.ViewHolder {
         TextView valorTextView;

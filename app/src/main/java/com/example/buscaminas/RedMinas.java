@@ -16,4 +16,7 @@ public class RedMinas {
         }
     }
 
+    public List<Celda> getCeldas() {
+        return celdas;
+    }
 }
