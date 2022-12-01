@@ -157,6 +157,18 @@ public class RedMinas {
         return celdasAdyacentes;
     }
 
+    /**
+     * Revela todas las bombas una vez se clicka en una (pierde el usuario)
+     */
+    public void revelarTodasLasBombas(){
+        for (Celda celda : celdas) {
+            if (celda.getNum() == Celda.BOMBA) {
+                celda.setRevelado(true);
+            }
+        }
+    }
+
+
 
     public List<Celda> getCeldas() {
         return celdas;

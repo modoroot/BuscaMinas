@@ -10,8 +10,13 @@ import java.util.List;
  */
 public class BuscaMinas {
     private RedMinas redMinas;
+
     private boolean destapado;
     private boolean juegoTerminado;
+    private boolean isTiempoAcabado;
+    private boolean casillaMarcada;
+
+    private int numBanderas;
 
     /**
      * Constructor de la clase
@@ -22,6 +27,9 @@ public class BuscaMinas {
     public BuscaMinas(int tamanio, int numeroBombas) {
         this.destapado = true;
         this.juegoTerminado = false;
+        this.isTiempoAcabado = false;
+        this.casillaMarcada = false;
+        this.numBanderas = 0;
         redMinas = new RedMinas(tamanio);
         redMinas.generacionRed(numeroBombas);
     }
@@ -32,8 +40,10 @@ public class BuscaMinas {
      * @param celda celda en el tablero
      */
     public void manejadorClickCeldas(Celda celda) {
-        if (destapado) {
-            clear(celda);
+        if (!juegoTerminado && !isPartidaGanada() && !isTiempoAcabado) {
+            if (destapado) {
+                clear(celda);
+            }
         }
     }
 
@@ -46,12 +56,10 @@ public class BuscaMinas {
         int indice = getRedMinas().getCeldas().indexOf(celda);
         getRedMinas().getCeldas().get(indice).setRevelado(true);
 
-
         if (celda.getNum() == Celda.VACIO) {
             //para destapar en conjunto
             List<Celda> destapar = new ArrayList<>();
             List<Celda> comprobarCeldasAdyacentes = new ArrayList<>();
-
             comprobarCeldasAdyacentes.add(celda);
 
             while (comprobarCeldasAdyacentes.size() > 0) {
@@ -78,10 +86,51 @@ public class BuscaMinas {
             for (Celda celdas : destapar) {
                 celdas.setRevelado(true);
             }
+            //el usuario clicka una bomba. El juego termina
+        } else if (celda.getNum() == Celda.BOMBA) {
+            juegoTerminado = true;
         }
     }
 
+    public boolean isPartidaGanada() {
+        int celdasPorRevelar = 0;
+        for (Celda c : getRedMinas().getCeldas()) {
+            if (c.getNum() != Celda.BOMBA && c.getNum() != Celda.VACIO && !c.getRevelado()) {
+                celdasPorRevelar++;
+            }
+        }
+        if (celdasPorRevelar == 0)
+            return true;
+        else return false;
+    }
+
+    public void sinTiempo(){
+        isTiempoAcabado = true;
+    }
+
+    public void bandera(Celda celda){
+
+    }
+
+    public void pulsarBandera(){
+
+    }
+
+
+
     public RedMinas getRedMinas() {
         return redMinas;
+    }
+
+    public boolean isJuegoTerminado() {
+        return juegoTerminado;
+    }
+
+    public boolean isCasillaMarcada() {
+        return casillaMarcada;
+    }
+
+    public int getNumBanderas() {
+        return numBanderas;
     }
 }

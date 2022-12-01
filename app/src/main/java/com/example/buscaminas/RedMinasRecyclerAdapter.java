@@ -126,6 +126,8 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
                         valorTextView.setTextColor(Color.RED);
                     }
                 }
+            } else if(celda.getMarcado()){
+                    valorTextView.setText(R.string.bandera);
             }
         }
     }
