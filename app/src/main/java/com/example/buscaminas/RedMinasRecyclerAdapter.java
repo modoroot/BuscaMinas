@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+
 /**
  *
+ * @author amna
+ * @version 1.0
  */
 public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecyclerAdapter.EnvaseRedMinas> {
     private List<Celda> celdas;

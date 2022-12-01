@@ -1,5 +1,11 @@
 package com.example.buscaminas;
 
+
+/**
+ *
+ * @author amna
+ * @version 1.0
+ */
 public class Celda {
     public static final int BOMBA = -1;
     public static final int VACIO = 0;

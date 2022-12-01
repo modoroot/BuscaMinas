@@ -1,5 +1,11 @@
 package com.example.buscaminas;
 
+
+/**
+ *
+ * @author amna
+ * @version 1.0
+ */
 public class BuscaMinas {
     private final RedMinas redMinas;
 

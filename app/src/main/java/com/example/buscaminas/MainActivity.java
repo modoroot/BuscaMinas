@@ -7,6 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+
+/**
+ *
+ * @author amna
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity implements EventClickCelda{
         RecyclerView recyclerView;
         RedMinasRecyclerAdapter redMinasRecyclerAdapter;
