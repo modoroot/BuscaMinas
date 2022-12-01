@@ -14,13 +14,12 @@ import java.util.List;
 
 
 /**
- *
  * @author amna
  * @version 1.0
  */
 public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecyclerAdapter.EnvaseRedMinas> {
     private List<Celda> celdas;
-    private final EventClickCelda listener;
+    private EventClickCelda listener;
 
     /**
      * @param celdas   celdas del tablero
@@ -82,7 +81,7 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
     }
 
     /**
-     * Clase interna
+     * Clase anónima
      */
     class EnvaseRedMinas extends RecyclerView.ViewHolder {
         TextView valorTextView;
@@ -103,8 +102,14 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
          */
         public void bind(final Celda celda) {
             itemView.setBackgroundColor(Color.GRAY);
-            itemView.setOnClickListener(v -> listener.ClickCelda(celda));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.clickCelda(celda);
+                }
+            });
 
+            //muestra la imagen correspondiente según el num
             if (celda.getRevelado()) {
                 if (celda.getNum() == Celda.BOMBA) {
                     valorTextView.setText(R.string.bomba);
@@ -121,8 +126,6 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
                         valorTextView.setTextColor(Color.RED);
                     }
                 }
-            } else if (celda.getMarcado()) {
-                valorTextView.setText(R.string.bandera);
             }
         }
     }

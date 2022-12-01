@@ -6,5 +6,5 @@ package com.example.buscaminas;
  * @version 1.0
  */
 public interface EventClickCelda {
-    void ClickCelda(Celda celda);
+    void clickCelda(Celda celda);
 }

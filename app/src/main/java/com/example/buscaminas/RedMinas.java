@@ -10,11 +10,12 @@ import java.util.Random;
  * @version 1.0
  */
 public class RedMinas {
-    private final List<Celda> celdas;
-    private final int tamanio;
+    private List<Celda> celdas;
+    private int tamanio;
 
     /**
      * Constructor de la clase
+     *
      * @param tamanio parámetro para el tamaño del tablero
      */
     public RedMinas(int tamanio) {
@@ -127,15 +128,24 @@ public class RedMinas {
         List<Celda> celdasAdyacentes = new ArrayList<>();
         List<Celda> listaCeldas = new ArrayList<>();
 
-        //rodea en las 8 distintas direcciones
-        listaCeldas.add(posCelda(x + 1, y + 1));
-        listaCeldas.add(posCelda(x - 1, y - 1));
-        listaCeldas.add(posCelda(x + 1, y));
+
         listaCeldas.add(posCelda(x - 1, y));
-        listaCeldas.add(posCelda(x, y + 1));
+        listaCeldas.add(posCelda(x + 1, y));
+        listaCeldas.add(posCelda(x - 1, y - 1));
         listaCeldas.add(posCelda(x, y - 1));
         listaCeldas.add(posCelda(x + 1, y - 1));
         listaCeldas.add(posCelda(x - 1, y + 1));
+        listaCeldas.add(posCelda(x, y + 1));
+        listaCeldas.add(posCelda(x + 1, y + 1));
+        //rodea en las 8 distintas direcciones
+//        listaCeldas.add(posCelda(x + 1, y + 1));
+//        listaCeldas.add(posCelda(x - 1, y - 1));
+//        listaCeldas.add(posCelda(x + 1, y));
+//        listaCeldas.add(posCelda(x - 1, y));
+//        listaCeldas.add(posCelda(x, y + 1));
+//        listaCeldas.add(posCelda(x, y - 1));
+//        listaCeldas.add(posCelda(x + 1, y - 1));
+//        listaCeldas.add(posCelda(x - 1, y + 1));
         //guarda celdas adyacentes
         for (Celda celda : listaCeldas) {
             if (celda != null) {
