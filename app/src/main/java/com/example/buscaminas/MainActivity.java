@@ -1,5 +1,6 @@
 package com.example.buscaminas;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +36,9 @@ public class MainActivity extends AppCompatActivity implements EventClickCelda {
         check = findViewById(R.id.activity_main_check);
 
         bandera = findViewById(R.id.activity_main_bandera);
+        bandera = findViewById(R.id.activity_main_bandera);
         contadorBandera = findViewById(R.id.activity_main_flagsleft);
-        bandera.setOnClickListener(v -> {
-            buscaMinas.activarDesactivarModoBandera();
-        });
+        bandera.setOnClickListener(v -> buscaMinas.activarDesactivarModoBandera());
 
         //creación/reseteo del juego clickando el check del layout
         check.setOnClickListener(view -> {
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements EventClickCelda {
         });
         tiempo = findViewById(R.id.activity_main_contador);
         contadorEmpezado = false;
-        cdt = new CountDownTimer(10000L, 1000) {
+        cdt = new CountDownTimer(300000L, 1000) {
             @SuppressLint("DefaultLocale")
             @Override
             public void onTick(long l) {
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements EventClickCelda {
             contadorEmpezado = true;
         }
         if (buscaMinas.isJuegoTerminado()) {
-            Toast.makeText(getApplicationContext(), "Juego terminado amego", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Perdiste amego", Toast.LENGTH_SHORT).show();
             buscaMinas.getRedMinas().revelarTodasLasBombas();
         }
         if (buscaMinas.isPartidaGanada()) {
@@ -101,5 +104,38 @@ public class MainActivity extends AppCompatActivity implements EventClickCelda {
         redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
     }
 
+    @Override
+    public boolean OnCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuSelect = item.getItemId();
+        switch (menuSelect) {
+            case R.id.modoPrincipiante:
+                recyclerView.removeAllViews();
+                buscaMinas = new BuscaMinas(8, 2);
+                Toast.makeText(getApplicationContext(),
+                        "Modo de juego cambiado: Principiante", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.modoAmateur:
+                recyclerView.removeAllViews();
+                buscaMinas = new BuscaMinas(12, 2);
+                Toast.makeText(getApplicationContext(),
+                        "Modo de juego cambiado: Amateur", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.modoAvanzado:
+                recyclerView.removeAllViews();
+                buscaMinas = new BuscaMinas(16, 2);
+                Toast.makeText(getApplicationContext(),
+                        "Modo de juego cambiado: Avanzado", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

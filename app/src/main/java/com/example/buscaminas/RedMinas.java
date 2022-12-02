@@ -128,24 +128,16 @@ public class RedMinas {
         List<Celda> celdasAdyacentes = new ArrayList<>();
         List<Celda> listaCeldas = new ArrayList<>();
 
-
-        listaCeldas.add(posCelda(x - 1, y));
-        listaCeldas.add(posCelda(x + 1, y));
+        //rodea en las 8 distintas direcciones
+        listaCeldas.add(posCelda(x + 1, y + 1));
         listaCeldas.add(posCelda(x - 1, y - 1));
+        listaCeldas.add(posCelda(x + 1, y));
+        listaCeldas.add(posCelda(x - 1, y));
+        listaCeldas.add(posCelda(x, y + 1));
         listaCeldas.add(posCelda(x, y - 1));
         listaCeldas.add(posCelda(x + 1, y - 1));
         listaCeldas.add(posCelda(x - 1, y + 1));
-        listaCeldas.add(posCelda(x, y + 1));
-        listaCeldas.add(posCelda(x + 1, y + 1));
-        //rodea en las 8 distintas direcciones
-//        listaCeldas.add(posCelda(x + 1, y + 1));
-//        listaCeldas.add(posCelda(x - 1, y - 1));
-//        listaCeldas.add(posCelda(x + 1, y));
-//        listaCeldas.add(posCelda(x - 1, y));
-//        listaCeldas.add(posCelda(x, y + 1));
-//        listaCeldas.add(posCelda(x, y - 1));
-//        listaCeldas.add(posCelda(x + 1, y - 1));
-//        listaCeldas.add(posCelda(x - 1, y + 1));
+
         //guarda celdas adyacentes
         for (Celda celda : listaCeldas) {
             if (celda != null) {

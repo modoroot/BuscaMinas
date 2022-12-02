@@ -5,4 +5,7 @@
     <string name="bandera">🚩</string>
     <string name="bomba">💣</string>
     <string name="contador">000</string>
+    <string name="modo_amateur">Amateur</string>
+    <string name="modo_avanzado">Avanzado</string>
+    <string name="modo_principiante">Principiante</string>
 </resources>

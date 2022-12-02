@@ -30,14 +30,6 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
         this.listener = listener;
     }
 
-    public List<Celda> getCeldas() {
-        return celdas;
-    }
-
-    public EventClickCelda getListener() {
-        return listener;
-    }
-
     /**
      * @param parent   para inflar las vistas de las celdas (en sí, es para actualizarlas)
      * @param viewType //
