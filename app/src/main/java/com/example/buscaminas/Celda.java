@@ -14,20 +14,36 @@ public class Celda {
     private boolean revelado;
     private boolean isBandera;
 
+    /**
+     * Constructor de la clase
+     * @param num celda
+     */
     public Celda(int num) {
         this.num = num;
         this.revelado = false;
         this.isBandera = false;
     }
 
+    /**
+     *
+     * @return num celdas
+     */
     public int getNum() {
         return num;
     }
 
+    /**
+     *
+     * @return casilla revelada
+     */
     public boolean getRevelado() {
         return revelado;
     }
 
+    /**
+     *
+     * @return activada o desactivada modo bandera
+     */
     public boolean isBandera() {
         return isBandera;
     }

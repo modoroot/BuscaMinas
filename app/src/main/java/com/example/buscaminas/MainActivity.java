@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
 
     /**
      * Método que maneja diferentes posibles eventos en las celdas una vez
-     * se clicka en una
+     * se clicka en una de ellas
      *
      * @param celda celda tablero
      */
@@ -129,6 +129,11 @@ public class MainActivity extends AppCompatActivity implements EventClick {
         redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
     }
 
+    /**
+     * Infla el menú para el activity_main.xml
+     * @param menu menú
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -136,17 +141,23 @@ public class MainActivity extends AppCompatActivity implements EventClick {
         return true;
     }
 
+    /**
+     * Menú que maneja los diferentes ítems. Contiene las 3 dificultades y las instrucciones
+     * @param item subítem
+     * @return subítem seleccionado
+     */
     @SuppressLint({"NonConstantResourceId", "DefaultLocale"})
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.instrucciones:
+                //ajustes alertdialog
                 builder.setTitle(R.string.instrucciones);
                 builder.setMessage(R.string.instrucciones_texto);
                 builder.setPositiveButton("Aceptar",null);
-
                 AlertDialog dialog = builder.create();
+                //lo muestra
                 dialog.show();
                 return true;
 
@@ -158,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                     //resetea el contador a 0
                     cdt.cancel();
                     segundos = 0;
+                    //muestreo del contador
                     tiempo.setText(R.string.contador);
                 });
                 recyclerView.removeAllViews();

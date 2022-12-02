@@ -16,6 +16,7 @@
         - Despejar todo el tablero sin pulsar una casilla con mina.\n \n
         - Los números de las casillas significan la cantidad de minas que hay a su alrededor en las 8 diferentes direcciones.\n \n
         - Las banderas son para marcar una posible posición de una mina. Pero cuidado, si te equivocas, <b>pierdes la partida</b>!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n \n
+        - Pulsa el icono de la bandera para activar y desactivar\n\n
         - disfruta 👍
     </string>
 </resources>

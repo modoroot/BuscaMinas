@@ -39,7 +39,8 @@ public class BuscaMinas {
     }
 
     /**
-     * destapa la celda
+     * Método que comprueba cada vez que se pulsa una celda
+     * las posibles condiciones que podrían darse (
      *
      * @param celda celda en el tablero
      */
@@ -54,7 +55,7 @@ public class BuscaMinas {
     }
 
     /**
-     * Revela la celda clickada
+     * Revela la celda clickada y sus adyacentes
      *
      * @param celda celda en el tablero
      */
@@ -144,12 +145,13 @@ public class BuscaMinas {
         }
     }
 
+    /**
+     * Método que controla el modo click-bandera
+     */
     public void activarDesactivarModoBandera(){
         descubrirCasilla = !descubrirCasilla;
         banderaActivada = !banderaActivada;
     }
-
-
 
     public RedMinas getRedMinas() {
         return redMinas;
@@ -159,11 +161,4 @@ public class BuscaMinas {
         return juegoTerminado;
     }
 
-    public int getNumBanderas() {
-        return numBanderas;
-    }
-
-    public int getNumeroBombas() {
-        return numeroBombas;
-    }
 }
