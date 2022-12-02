@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //asignación de id's a variables
         check = findViewById(R.id.activity_main_check);
         bandera = findViewById(R.id.activity_main_bandera);
         builder = new AlertDialog.Builder(this);
+        //activar-desactivar modo bandera
         bandera.setOnClickListener(v -> buscaMinas.activarDesactivarModoBandera());
 
         //creación/reseteo del juego clickando el check del layout
@@ -163,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 return true;
 
             case R.id.modoPrincipiante:
+                //resetea el tablero cuando se pulsa el check con lo siguiente
                 check.setOnClickListener(view -> {
                     buscaMinas = new BuscaMinas(8, 10);
                     redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
