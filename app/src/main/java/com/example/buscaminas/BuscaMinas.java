@@ -153,6 +153,8 @@ public class BuscaMinas {
         banderaActivada = !banderaActivada;
     }
 
+
+
     public RedMinas getRedMinas() {
         return redMinas;
     }
@@ -161,4 +163,11 @@ public class BuscaMinas {
         return juegoTerminado;
     }
 
+    public int getNumBanderas() {
+        return numBanderas;
+    }
+
+    public int getNumeroBombas() {
+        return numeroBombas;
+    }
 }
