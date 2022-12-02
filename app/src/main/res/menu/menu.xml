@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/modoPrincipiante"
-        android:title="@string/modo_principiante" />
+        android:title="@string/modo_principiante"
+        />
     <item
         android:id="@+id/modoAmateur"
         android:title="@string/modo_amateur" />

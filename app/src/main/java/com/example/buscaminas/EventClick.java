@@ -9,5 +9,4 @@ import android.view.Menu;
  */
 public interface EventClick {
     void clickCelda(Celda celda);
-    boolean OnCreateOptionsMenu(Menu menu);
 }

@@ -33,7 +33,7 @@ public class Celda {
     }
 
     /**
-     * para casillas reveladas
+     *
      * @param revelado casilla revelada
      */
     public void setRevelado(boolean revelado) {
@@ -41,7 +41,7 @@ public class Celda {
     }
 
     /**
-     * casillas marcadas con el banderín
+     *
      * @param marcado casillas marcadas
      */
     public void setBandera(boolean marcado) {

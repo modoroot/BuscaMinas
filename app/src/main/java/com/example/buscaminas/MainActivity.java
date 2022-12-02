@@ -11,8 +11,6 @@ import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     RedMinasRecyclerAdapter redMinasRecyclerAdapter;
     BuscaMinas buscaMinas;
     TextView check, tiempo, bandera, contadorBandera;
-    EditText menu;
     CountDownTimer cdt;
     int segundos;
     boolean contadorEmpezado;
@@ -38,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        registerForContextMenu(menu);
         check = findViewById(R.id.activity_main_check);
         bandera = findViewById(R.id.activity_main_bandera);
         contadorBandera = findViewById(R.id.activity_main_flagsleft);
@@ -100,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     /**
      * Método que maneja diferentes posibles eventos en las celdas una vez
      * se clicka en una
-     * @param celda
+     * @param celda celda tablero
      */
     @SuppressLint("DefaultLocale")
     @Override
@@ -131,18 +127,17 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     }
 
     @Override
-    public boolean OnCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @SuppressLint({"NonConstantResourceId", "DefaultLocale"})
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        int menuSelect = item.getItemId();
-        switch (menuSelect) {
+        switch (item.getItemId()){
             case R.id.modoPrincipiante:
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
@@ -151,7 +146,8 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(),
                         this);
                 recyclerView.setAdapter(redMinasRecyclerAdapter);
-                contadorBandera.setText(String.format("%03d", buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
+                contadorBandera.setText(String.format("%03d",
+                        buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
 
                 redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
                 contadorEmpezado = false;
@@ -163,7 +159,8 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                         buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
                 Toast.makeText(getApplicationContext(),
                         "Modo de juego cambiado: Principiante", Toast.LENGTH_SHORT).show();
-                break;
+
+                return true;
             case R.id.modoAmateur:
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 12));
@@ -183,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                         buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
                 Toast.makeText(getApplicationContext(),
                         "Modo de juego cambiado: Amateur", Toast.LENGTH_SHORT).show();
-                break;
+
+                return true;
             case R.id.modoAvanzado:
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 16));
@@ -202,10 +200,12 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 contadorBandera.setText(String.format("%03d",
                         buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
                 Toast.makeText(getApplicationContext(),
-                        "Modo de juego cambiado: Avanzado", Toast.LENGTH_SHORT).show();
-                break;
+                        "Modo de juego cambiado: Amateur", Toast.LENGTH_SHORT).show();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
 }
