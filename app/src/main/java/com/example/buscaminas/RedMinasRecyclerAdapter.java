@@ -14,26 +14,29 @@ import java.util.List;
 
 
 /**
+ *
  * @author amna
  * @version 1.0
  */
 public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecyclerAdapter.EnvaseRedMinas> {
     private List<Celda> celdas;
-    private EventClickCelda listener;
+    private EventClick listener;
 
     /**
      * @param celdas   celdas del tablero
      * @param listener manejador de eventos para las celdas
      */
-    public RedMinasRecyclerAdapter(List<Celda> celdas, EventClickCelda listener) {
+    public RedMinasRecyclerAdapter(List<Celda> celdas, EventClick listener) {
         this.celdas = celdas;
         this.listener = listener;
     }
 
     /**
+     *
+     * Infla el layout de las celdas
      * @param parent   para inflar las vistas de las celdas (en sí, es para actualizarlas)
      * @param viewType //
-     * @return devuelve
+     * @return devuelve todas las casillas
      */
     @NonNull
     @Override
@@ -44,6 +47,8 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
     }
 
     /**
+     *
+     *
      * @param envase   selecciona el itemview
      * @param posicion posicion de la celda
      */
@@ -74,6 +79,8 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
 
     /**
      * Clase anónima
+     * Determina el número y color de las celdas según sus bombas
+     * adyacentes
      */
     class EnvaseRedMinas extends RecyclerView.ViewHolder {
         TextView valorTextView;
@@ -111,6 +118,8 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
                         valorTextView.setTextColor(Color.GREEN);
                     } else if (celda.getNum() == 3) {
                         valorTextView.setTextColor(Color.RED);
+                    }else if (celda.getNum() == 4) {
+                        valorTextView.setTextColor(Color.MAGENTA);
                     }
                 }
             } else if(celda.isBandera()){

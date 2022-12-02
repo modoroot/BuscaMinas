@@ -7,7 +7,7 @@ import android.view.Menu;
  * @author amna
  * @version 1.0
  */
-public interface EventClickCelda {
+public interface EventClick {
     void clickCelda(Celda celda);
     boolean OnCreateOptionsMenu(Menu menu);
 }

@@ -2,7 +2,7 @@ package com.example.buscaminas;
 
 
 /**
- *
+ * Clase que contiene las propiedades principales de las celdas
  * @author amna
  * @version 1.0
  */
@@ -30,10 +30,6 @@ public class Celda {
 
     public boolean isBandera() {
         return isBandera;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
     }
 
     /**

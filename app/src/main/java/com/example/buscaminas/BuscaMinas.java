@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que gestiona la lógica de las minas
+ * y banderas
  * @author amna
  * @version 1.0
  */
@@ -57,12 +59,15 @@ public class BuscaMinas {
      * @param celda celda en el tablero
      */
     public void clear(Celda celda) {
+        //celda seleccionada
         int indice = getRedMinas().getCeldas().indexOf(celda);
+        //revela las celdas según la celda seleccionada
         getRedMinas().getCeldas().get(indice).setRevelado(true);
 
         if (celda.getNum() == Celda.VACIO) {
             //para destapar en conjunto
             List<Celda> destapar = new ArrayList<>();
+            //celdas adyacentes de la celda seleccionada hasta las bombas
             List<Celda> comprobarCeldasAdyacentes = new ArrayList<>();
             comprobarCeldasAdyacentes.add(celda);
 
@@ -96,6 +101,10 @@ public class BuscaMinas {
         }
     }
 
+    /**
+     * comprueba si quedan 0 celdas por revelar (sin contar celdas con bomba)
+     * @return devuelve true si quedan 0 (ganar), false si es distinto a 0 (aún no ha ganado)
+     */
     public boolean isPartidaGanada() {
         int celdasPorRevelar = 0;
         for (Celda c : getRedMinas().getCeldas()) {
@@ -108,11 +117,20 @@ public class BuscaMinas {
         else return false;
     }
 
+    /**
+     * método que maneja una variable booleana que cuando se invoca a dicho método,
+     * la activa
+     */
     public void sinTiempo(){
         isTiempoAcabado = true;
     }
 
+    /**
+     * método que maneja las banderas de las celdas
+     * @param celda celda del buscaminas
+     */
     public void bandera(Celda celda){
+        //si una celda ya tiene una bandera, no deja colocar otra
         if (!celda.isBandera()){
             celda.setBandera(!celda.isBandera());
             //contador del TextView
@@ -139,10 +157,6 @@ public class BuscaMinas {
 
     public boolean isJuegoTerminado() {
         return juegoTerminado;
-    }
-
-    public boolean isBanderaActivada() {
-        return banderaActivada;
     }
 
     public int getNumBanderas() {

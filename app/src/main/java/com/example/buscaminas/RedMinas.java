@@ -6,6 +6,8 @@ import java.util.Random;
 
 
 /**
+ * Clase que crea e indexa las casillas de bombas, vacías, y casillas
+ * adyacentes a bombas
  * @author amna
  * @version 1.0
  */
@@ -161,7 +163,10 @@ public class RedMinas {
     }
 
 
-
+    /**
+     *
+     * @return devuelve las celdas
+     */
     public List<Celda> getCeldas() {
         return celdas;
     }
