@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 segundos = 0;
                 tiempo.setText(R.string.contador);
                 Toast.makeText(getApplicationContext(),
-                        "Modo de juego cambiado: Amateur", Toast.LENGTH_SHORT).show();
+                        "Modo de juego cambiado: Avanzado", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:
