@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
 
         //creación/reseteo del juego clickando el check del layout
         check.setOnClickListener(view -> {
-            buscaMinas = new BuscaMinas(8, 2);
+            buscaMinas = new BuscaMinas(8, 10);
             redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
             contadorEmpezado = false;
             //resetea el contador a 0
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
         recyclerView = findViewById(R.id.activity_main_grid);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
         //tamaño tablero y número de bombas en él
-        buscaMinas = new BuscaMinas(8, 2);
+        buscaMinas = new BuscaMinas(8, 10);
         redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(), this);
         recyclerView.setAdapter(redMinasRecyclerAdapter);
         contadorBandera.setText(String.format("%03d", buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
             case R.id.modoPrincipiante:
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
-                buscaMinas = new BuscaMinas(8, 2);
+                buscaMinas = new BuscaMinas(8, 10);
 
                 redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(),
                         this);
@@ -201,11 +201,9 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                         buscaMinas.getNumeroBombas() - buscaMinas.getNumBanderas()));
                 Toast.makeText(getApplicationContext(),
                         "Modo de juego cambiado: Amateur", Toast.LENGTH_SHORT).show();
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }
