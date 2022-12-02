@@ -14,7 +14,8 @@ import java.util.List;
 
 
 /**
- *
+ * Clase que actualiza el tablero de las celdas de forma grupal
+ * para que funcione la parte lógica de celdas adyacentes a una mina
  * @author amna
  * @version 1.0
  */
@@ -120,6 +121,8 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
                         valorTextView.setTextColor(Color.RED);
                     }else if (celda.getNum() == 4) {
                         valorTextView.setTextColor(Color.MAGENTA);
+                    }else if (celda.getNum() == 5) {
+                        valorTextView.setTextColor(Color.BLACK);
                     }
                 }
             } else if(celda.isBandera()){

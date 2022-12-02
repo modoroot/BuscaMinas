@@ -18,9 +18,6 @@ public class BuscaMinas {
     private boolean isTiempoAcabado;
     private boolean banderaActivada;
 
-    private int numBanderas;
-    private int numeroBombas;
-
     /**
      * Constructor de la clase
      *
@@ -32,8 +29,7 @@ public class BuscaMinas {
         this.juegoTerminado = false;
         this.isTiempoAcabado = false;
         this.banderaActivada = false;
-        this.numBanderas = 0;
-        this.numeroBombas = numeroBombas;
+
         redMinas = new RedMinas(tamanio);
         redMinas.generacionRed(numeroBombas);
     }
@@ -134,14 +130,6 @@ public class BuscaMinas {
         //si una celda ya tiene una bandera, no deja colocar otra
         if (!celda.isBandera()){
             celda.setBandera(!celda.isBandera());
-            //contador del TextView
-            int contador = 0;
-            for (Celda c : getRedMinas().getCeldas()) {
-                if (c.isBandera()) {
-                    contador++;
-                }
-            }
-            numBanderas = contador;
         }
     }
 
@@ -153,8 +141,6 @@ public class BuscaMinas {
         banderaActivada = !banderaActivada;
     }
 
-
-
     public RedMinas getRedMinas() {
         return redMinas;
     }
@@ -163,11 +149,4 @@ public class BuscaMinas {
         return juegoTerminado;
     }
 
-    public int getNumBanderas() {
-        return numBanderas;
-    }
-
-    public int getNumeroBombas() {
-        return numeroBombas;
-    }
 }

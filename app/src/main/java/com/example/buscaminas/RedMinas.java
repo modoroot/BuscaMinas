@@ -104,7 +104,7 @@ public class RedMinas {
 
     /**
      * Método que comprueba la posición de
-     * la celda según los parámetros de x,y y
+     * la celda según los parámetros de [x,y] y
      * los transforma en un índice
      *
      * @param x coordenada x
