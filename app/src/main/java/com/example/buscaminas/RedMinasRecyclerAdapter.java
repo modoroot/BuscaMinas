@@ -79,7 +79,7 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
     }
 
     /**
-     * Clase anónima
+     * Clase anónima.
      * Determina el número y color de las celdas según sus bombas
      * adyacentes
      */

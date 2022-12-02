@@ -1,9 +1,7 @@
 package com.example.buscaminas;
 
-import android.view.Menu;
-
 /**
- * Interfaz para manejar los clicks en la app
+ * Interfaz para manejar los clicks en las celdas
  * @author amna
  * @version 1.0
  */
