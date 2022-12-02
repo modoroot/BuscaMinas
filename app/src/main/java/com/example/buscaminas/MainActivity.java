@@ -130,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     }
 
     /**
-     * Infla el menú para el activity_main.xml
+     * Infla el menú de menu.xml para que se muestre en activity_main.xml, es decir,
+     * el layout principal de la aplicación.
      * @param menu menú
      * @return true
      */
@@ -172,11 +173,12 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                     //muestreo del contador
                     tiempo.setText(R.string.contador);
                 });
+                //borra las vistas
                 recyclerView.removeAllViews();
                 recyclerView = findViewById(R.id.activity_main_grid);
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
                 buscaMinas = new BuscaMinas(8, 10);
-
+                //asigna las minas y celdas al tablero
                 redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(),
                         this);
                 recyclerView.setAdapter(redMinasRecyclerAdapter);

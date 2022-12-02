@@ -24,7 +24,7 @@ public class RedMinas {
         this.tamanio = tamanio;
         celdas = new ArrayList<>();
         for (int i = 0; i < tamanio * tamanio; i++) {
-            //generación del campo de minas a partir de un tamaño determinado
+            //generación del tablero a partir de un tamaño determinado
             celdas.add(new Celda(Celda.VACIO));
         }
     }
@@ -67,7 +67,7 @@ public class RedMinas {
         //generador bombas hasta que sea mayor que el parámetro
         //del método
         while (bombas < numBombas) {
-            //número entre 0 y 8
+            //número entre 0 y 9
             int x = new Random().nextInt(tamanio);
             int y = new Random().nextInt(tamanio);
             int indice = toIndex(x, y);
@@ -105,7 +105,7 @@ public class RedMinas {
     /**
      * Método que comprueba la posición de
      * la celda según los parámetros de [x,y] y
-     * los transforma en un índice
+     * guarda el índice obtenido
      *
      * @param x coordenada x
      * @param y coordenada y
@@ -124,7 +124,7 @@ public class RedMinas {
      *
      * @param x coordenada x
      * @param y coordenada y
-     * @return lista de celdas para la red
+     * @return lista de celdas adyacentes a la seleccionada
      */
     public List<Celda> celdasAdyacentes(int x, int y) {
         List<Celda> celdasAdyacentes = new ArrayList<>();
@@ -152,7 +152,8 @@ public class RedMinas {
     }
 
     /**
-     * Revela todas las bombas una vez se clicka en una (pierde el usuario)
+     * Revela todas las bombas una vez se clicka en una o
+     * se coloca una bandera en una casilla vacía (pierde el usuario)
      */
     public void revelarTodasLasBombas(){
         for (Celda celda : celdas) {

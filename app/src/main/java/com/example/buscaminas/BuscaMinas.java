@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que gestiona la lógica de las minas
+ * Clase que gestiona la lógica de las minas, celdas adyacentes
  * y banderas
  * @author amna
  * @version 1.0

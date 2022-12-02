@@ -96,11 +96,13 @@ public class RedMinasRecyclerAdapter extends RecyclerView.Adapter<RedMinasRecycl
 
         /**
          * método para el muestreo del tipo de celda (celda con bomba, celda vacía,
-         * celda con 1 bomba cercana, y sucesivamente)
+         * celda con 1 bomba cercana, y sucesivamente), asignación de bombas y celdas
+         * adyacentes
          *
          * @param celda celda seleccionada
          */
         public void bind(final Celda celda) {
+            //color celda
             itemView.setBackgroundColor(Color.GRAY);
             itemView.setOnClickListener(view -> listener.clickCelda(celda));
 
