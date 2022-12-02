@@ -9,5 +9,13 @@
     <string name="modo_avanzado">Avanzado</string>
     <string name="modo_principiante">Principiante</string>
     <string name="instrucciones">Instrucciones</string>
-    <string name="instrucciones_texto">asdsdasadsad</string>
+    <string name="instrucciones_texto">Juego clásico del Buscaminas.
+        Selecciona libremente entre las 3 posibles dificultades (Principiante, Amateur, Avanzado).\n \n
+        CÓMO JUGAR:\n
+        - Existe un contador de tiempo límite hasta <b>300 segundos</b> (5 minutos) para todas las dificultades.\n \n
+        - Despejar todo el tablero sin pulsar una casilla con mina.\n \n
+        - Los números de las casillas significan la cantidad de minas que hay a su alrededor en las 8 diferentes direcciones.\n \n
+        - Las banderas son para marcar una posible posición de una mina. Pero cuidado, si te equivocas, <b>pierdes la partida</b>!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n \n
+        - disfruta 👍
+    </string>
 </resources>

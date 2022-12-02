@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     RecyclerView recyclerView;
     RedMinasRecyclerAdapter redMinasRecyclerAdapter;
     BuscaMinas buscaMinas;
-    TextView check, tiempo, bandera, instrucciones;
+    TextView check, tiempo, bandera;
     CountDownTimer cdt;
     AlertDialog.Builder builder;
     int segundos;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
         setContentView(R.layout.activity_main);
         check = findViewById(R.id.activity_main_check);
         bandera = findViewById(R.id.activity_main_bandera);
-
+        builder = new AlertDialog.Builder(this);
         bandera.setOnClickListener(v -> buscaMinas.activarDesactivarModoBandera());
 
         //creación/reseteo del juego clickando el check del layout
@@ -118,11 +118,13 @@ public class MainActivity extends AppCompatActivity implements EventClick {
             //muestra por pantalla
             Toast.makeText(getApplicationContext(), "Perdiste amego", Toast.LENGTH_SHORT).show();
             buscaMinas.getRedMinas().revelarTodasLasBombas();
+            cdt.cancel();
         }
         //si el usuario ha destapado todas las casillas sin pulsar en ninguna bomba
         if (buscaMinas.isPartidaGanada()) {
             Toast.makeText(getApplicationContext(), "Has ganado amego", Toast.LENGTH_SHORT).show();
             buscaMinas.getRedMinas().revelarTodasLasBombas();
+            cdt.cancel();
         }
         redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
     }
@@ -139,6 +141,15 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.instrucciones:
+                builder.setTitle(R.string.instrucciones);
+                builder.setMessage(R.string.instrucciones_texto);
+                builder.setPositiveButton("Aceptar",null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+
             case R.id.modoPrincipiante:
                 check.setOnClickListener(view -> {
                     buscaMinas = new BuscaMinas(8, 10);
