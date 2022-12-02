@@ -19,6 +19,7 @@ import android.widget.Toast;
 /**
  * Clase lanzadora de la aplicación. Lanza todos los métodos creados
  * en las demás clases, lógica, y control de errores
+ *
  * @author amna
  * @version 1.0
  */
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements EventClick {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
         //tamaño tablero y número de bombas en él
         buscaMinas = new BuscaMinas(8, 10);
-        redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(), this);
+        redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(),
+                this);
         recyclerView.setAdapter(redMinasRecyclerAdapter);
 
     }
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     /**
      * Método que maneja diferentes posibles eventos en las celdas una vez
      * se clicka en una
+     *
      * @param celda celda tablero
      */
     @SuppressLint("DefaultLocale")
@@ -135,9 +138,19 @@ public class MainActivity extends AppCompatActivity implements EventClick {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.modoPrincipiante:
+                check.setOnClickListener(view -> {
+                    buscaMinas = new BuscaMinas(8, 10);
+                    redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
+                    contadorEmpezado = false;
+                    //resetea el contador a 0
+                    cdt.cancel();
+                    segundos = 0;
+                    tiempo.setText(R.string.contador);
+                });
                 recyclerView.removeAllViews();
+                recyclerView = findViewById(R.id.activity_main_grid);
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 8));
                 buscaMinas = new BuscaMinas(8, 10);
 
@@ -158,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
             case R.id.modoAmateur:
                 //creación/reseteo del juego clickando el check del layout
                 check.setOnClickListener(view -> {
-                    buscaMinas = new BuscaMinas(12, 10);
+                    buscaMinas = new BuscaMinas(12, 30);
                     redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
                     contadorEmpezado = false;
                     //resetea el contador a 0
@@ -167,10 +180,12 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                     tiempo.setText(R.string.contador);
                 });
                 recyclerView.removeAllViews();
+                recyclerView = findViewById(R.id.activity_main_grid);
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 12));
-                buscaMinas = new BuscaMinas(12, 2);
+                buscaMinas = new BuscaMinas(12, 30);
 
-                redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(), this);
+                redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(),
+                        this);
                 recyclerView.setAdapter(redMinasRecyclerAdapter);
 
                 redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
@@ -185,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements EventClick {
 
             case R.id.modoAvanzado:
                 check.setOnClickListener(view -> {
-                    buscaMinas = new BuscaMinas(16, 10);
+                    buscaMinas = new BuscaMinas(16, 60);
                     redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
                     contadorEmpezado = false;
                     //resetea el contador a 0
@@ -194,8 +209,9 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                     tiempo.setText(R.string.contador);
                 });
                 recyclerView.removeAllViews();
+                recyclerView = findViewById(R.id.activity_main_grid);
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 16));
-                buscaMinas = new BuscaMinas(16, 2);
+                buscaMinas = new BuscaMinas(16, 60);
 
                 redMinasRecyclerAdapter = new RedMinasRecyclerAdapter(buscaMinas.getRedMinas().getCeldas(), this);
                 recyclerView.setAdapter(redMinasRecyclerAdapter);
