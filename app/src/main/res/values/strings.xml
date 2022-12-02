@@ -8,4 +8,6 @@
     <string name="modo_amateur">Amateur</string>
     <string name="modo_avanzado">Avanzado</string>
     <string name="modo_principiante">Principiante</string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="instrucciones_texto">asdsdasadsad</string>
 </resources>
