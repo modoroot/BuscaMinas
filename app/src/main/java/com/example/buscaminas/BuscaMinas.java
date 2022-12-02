@@ -131,6 +131,10 @@ public class BuscaMinas {
         if (!celda.isBandera()){
             celda.setBandera(!celda.isBandera());
         }
+        //si se coloca una bandera en una celda sin bomba se termina la partida
+        if(celda.isBandera() && celda.getNum()!=-1){
+            juegoTerminado = true;
+        }
     }
 
     /**
