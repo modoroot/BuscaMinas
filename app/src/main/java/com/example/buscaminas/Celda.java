@@ -16,7 +16,7 @@ public class Celda {
 
     /**
      * Constructor de la clase
-     * @param num celda
+     * @param num tipo celda
      */
     public Celda(int num) {
         this.num = num;
@@ -26,7 +26,7 @@ public class Celda {
 
     /**
      *
-     * @return num celdas
+     * @return tipos de celdas
      */
     public int getNum() {
         return num;
