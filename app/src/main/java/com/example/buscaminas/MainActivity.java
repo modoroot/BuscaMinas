@@ -156,6 +156,16 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 return true;
 
             case R.id.modoAmateur:
+                //creación/reseteo del juego clickando el check del layout
+                check.setOnClickListener(view -> {
+                    buscaMinas = new BuscaMinas(12, 10);
+                    redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
+                    contadorEmpezado = false;
+                    //resetea el contador a 0
+                    cdt.cancel();
+                    segundos = 0;
+                    tiempo.setText(R.string.contador);
+                });
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 12));
                 buscaMinas = new BuscaMinas(12, 2);
@@ -174,6 +184,15 @@ public class MainActivity extends AppCompatActivity implements EventClick {
                 return true;
 
             case R.id.modoAvanzado:
+                check.setOnClickListener(view -> {
+                    buscaMinas = new BuscaMinas(16, 10);
+                    redMinasRecyclerAdapter.setCeldas(buscaMinas.getRedMinas().getCeldas());
+                    contadorEmpezado = false;
+                    //resetea el contador a 0
+                    cdt.cancel();
+                    segundos = 0;
+                    tiempo.setText(R.string.contador);
+                });
                 recyclerView.removeAllViews();
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 16));
                 buscaMinas = new BuscaMinas(16, 2);
